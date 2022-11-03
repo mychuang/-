@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
+    <script src="static/js/main.js"></script>
+    <link href="static/css/main.css" rel="stylesheet" type="text/css">
+    <title>2022資訊X財務尾牙抽獎</title>
+</head>
+
+<body>
+    <header>    
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white"><h1 class="mb-3">2022資訊X財務尾牙抽獎</h1></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-auto">
+                <select id="sfs" class="form-select">
+                    <option value="1">董事長獎</option>
+                    <option value="2">總經理獎</option>
+                    <option value="3">協理獎</option>
+                    <option value="4">副協理獎</option>
+                </select>
+            </div>
+            
+            <div class="col-auto">
+                <button id='getBtn' class="btn btn-info btn-lg">
+                    抽獎囉!!!
+                </button>
+            </div>
+
+        </div>
+        <span class="cloudContent"></span>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog box">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1>恭喜以下得獎者</h1>
+                </div>
+                <div class="modal-body content2">
+                    <p>ITLO</p>
+                    <p>李悅</p>
+                    <button class="btn btn-success" data-dismiss="modal">Confirm</button>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

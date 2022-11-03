@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body{
+	background: #010615;
+}
+
+/*below set cloud animation*/
+.tagcloud {
+    font-family: 'Poppins', sans-serif;  
+    font-size: 12px;
+	position: absolute;
+    top: 20%;
+    left: 12%;
+}
+.tagcloud--item:hover {
+    color: #36454F;
+}
+.cloudContent{
+    color: #edf872;
+}
+
+/*modal*/
+.modal-backdrop {
+	background-color: #6a6f80;
+}
+
+.modal-content {
+	background-color: #060c21;
+	color: #fff;
+}
+
+/*--- card ---*/
+.box{
+	position: relative;
+	width: 600px;
+	height: 600px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #060c21;
+}
+
+.box:before{
+	content: '';
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	right: -2px;
+	bottom: -2px;
+	background: #fff;
+	z-index: -1;
+}
+.box:after{
+	content: '';
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	right: -2px;
+	bottom: -2px;
+	background: #fff;
+	z-index: -2;
+	filter: blur(40px);
+}
+
+/*漸層*/
+.box:before,
+.box:after{
+	background: linear-gradient(235deg, #89ff00, #010615, #00bcd4);
+}
+
+
+/*漸層*/
+.box .content2{
+	padding: 20px;
+	color: #fff;
+	font-size: 20px;
+}
