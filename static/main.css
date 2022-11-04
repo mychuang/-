@@ -14,7 +14,7 @@ select{
     font-size: 12px;
 	position: absolute;
     top: 20%;
-    left: 12%;
+    left: 5%;
 }
 .tagcloud--item:hover {
     color: #36454F;
@@ -73,5 +73,5 @@ select{
 .box .content2{
 	padding: 20px;
 	color: #fff;
-	font-size: 20px;
+	font-size: 24px;
 }

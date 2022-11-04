@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
+
+    <!--可以想像成在模板中，我們先在這個位置挖了個洞，預留一個空位，等之後套用這個模板的網頁就可以填上。這就是 Jinja2 運作的方式。-->
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='main.css') }}">
+    <script src="{{url_for('static', filename='main.js') }}"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+
+<body>
+    <header>    
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white"><h1 class="mb-3">2022資訊X財務尾牙抽獎</h1></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 可供更改的部分 -->
+        {% block main %}{% endblock %}
+    </main>
+    
+</body>
+</html>

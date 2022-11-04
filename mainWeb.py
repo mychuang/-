@@ -1,3 +1,4 @@
+import pandas as pd
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -5,43 +6,54 @@ import json
 import random
 import time
 
-app = Flask(__name__)
-data = {"name": []}
-numData = {"num": ""}
-mainList = ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100',
-            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
-            '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+def getAll():
+    global df
+    global allData
+    # clean data
+    allData = {
+        'codeName': []
+    }
 
+    # check status and update
+    for i in range(df.shape[0]):
+        if df.loc[i, 'state'] == 0:
+            codeName = df.loc[i, 'code'] + df.loc[i, 'name']
+            allData['codeName'].append(codeName)
+
+app = Flask(__name__)
 # flask利用裝飾器@app.route來定義路由
 @app.route('/')
 def index():
+    getAll()
     return render_template('mainPage.html')
 
-@app.route('/getRequest', methods=['GET', 'POST'])
+@app.route('/getAll', methods=['GET'])
 def getData():
-    prizeNum = int(numData['num'])
-    print("input element: ", len(mainList))
-
-    while prizeNum > 0:
-        tmp = random.choice(mainList)
-        time.sleep(0.1)
-        mainList.remove(tmp)
-
-        if len(mainList) == 0:
-            print("No data")
-            break
-
-        data["name"].append(tmp)
-        print("remain element: ", len(mainList))
-        prizeNum -= 1
-    return json.dumps(data)
+    getAll()
+    #for i in range(df.shape[0]):
+    #    print(allData['codeName'][i])
+    return json.dumps(allData)
 
 @app.route('/setRequest', methods=['GET', 'POST'])
 def setData():
-    numData['num'] = request.form.get('num')
-    return json.dumps({"msg": "set sucess"})
-
+    pass
 
 if __name__ == '__main__':
+    """
+    Define global data
+    """
+    chooseData = {
+        'code': '',
+        'name': '',
+        'state': ''
+    }
+    allData = {
+        'codeName': []
+    }
+
+    # Read excell
+    df = pd.read_excel("test.xlsx", header=0)
+
+    #run web
     app.debug = True
     app.run()
