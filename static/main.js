@@ -45,6 +45,7 @@ function putData() {
     console.log("put data");
 }
 
+// 隨機抽取一名user
 $(function (){
     $('#getBtn').click(function(){
         //get index
@@ -53,18 +54,21 @@ $(function (){
         console.log("should call back-end sample data");
         console.log(s);
 
-        console.log("if get data, show modal");
-        $('#myModal').modal('show');
-
-        //$.ajax({
-        //    url: "/setRequest",
-        //    type: "POST",
-        //    dataType: "json",
-        //    data: {'num': '10'},
-        //    success: function (data) {
-        //        console.log(data.msg);
-        //    }
-        //})
+        $.ajax({
+            url: "/getOne",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                if(data.hasOwnProperty("code")){
+                    console.log("if get data, show modal");
+                    $("#code").text(data.code);
+                    $("#name").text(data.name);
+                    $('#myModal').modal('show');
+                }else{
+                    console.log('error');
+                }
+            }
+        })
     })
 })
 
