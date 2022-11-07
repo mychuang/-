@@ -10,8 +10,8 @@ function mainUI(myTags){
     
         // animation speed
         // slow, normal, fast
-        maxSpeed: 'slow',
-        initSpeed: 'slow',
+        maxSpeed: 'fast',
+        initSpeed: 'fast',
     
         // 0 = top
         // 90 = left
@@ -21,26 +21,6 @@ function mainUI(myTags){
         // interact with cursor move on mouse out
         keep: true,
     });
-}
-
-//query
-function getAll() {
-    console.log("getAll()");
-    
-    $.ajax({
-        url: "/getAll",
-        type: "GET",
-        dataType: "json",
-        success: function (data) {
-            if(data.hasOwnProperty("codeName")){
-                myTags = data.codeName;
-                console.log(myTags.length);
-                mainUI(myTags);
-            }else{
-                console.log('error');
-            }
-        }
-    })
 }
 
 //update => put| 修改
@@ -58,11 +38,14 @@ $(function (){
             data: {'state': s},
             success: function (data) {
                 console.log(data.msg);
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                alert(textStatus);
             }
         })
         
         $('#myModal').modal('hide');
-        getAll();
+
         location.reload();
     })
 })
@@ -77,19 +60,22 @@ $(function (){
             dataType: "json",
             success: function (data) {
                 if(data.hasOwnProperty("code")){
-                    console.log("get data, show modal");
                     $("#code").text(data.code);
                     $("#name").text(data.name);
                     $('#myModal').modal('show');
                 }else{
                     console.log('error');
                 }
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                alert(textStatus);
             }
         })
     })
 })
 
 $(document).ready(function () {
+
     $.ajax({
         url: "/getAll",
         type: "GET",
@@ -97,11 +83,21 @@ $(document).ready(function () {
         success: function (data) {
             if(data.hasOwnProperty("codeName")){
                 myTags = data.codeName;
-                console.log(myTags.length);
+                console.log("Num of member: " + myTags.length);
                 mainUI(myTags);
             }else{
                 console.log('error');
             }
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            //alert(jqXHR.responseText); //服务器返回的文本信息
+            //alert(jqXHR.status); //返回的HTTP状态码，比如常见的404,500等错误代码。
+            //alert(jqXHR.readyState); //readyState :当前状态,0-未初始化，1-正在载入，2-已经载入，3-数据进行交互，4-完成。
+            //alert(jqXHR.statusText); //对应状态码的错误信息，比如404错误信息是not found,500是Internal Server Error
+            
+            alert(textStatus); //"timeout"（超时）, "error"（错误）, "abort"(中止), "parsererror"（解析错误）
+            //alert(errorThrown);
         }
     })
+
 })
