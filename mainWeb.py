@@ -14,7 +14,7 @@ def getAll():
         'codeName': []
     }
 
-    # check status and update
+    # check status and update allData for showing
     for i in range(df.shape[0]):
         if df.loc[i, 'state'] == 0:
             codeName = df.loc[i, 'code'] + df.loc[i, 'name']
@@ -55,12 +55,24 @@ def getData():
 @app.route('/getOne', methods=['GET'])
 def getOneData():
     getOne()
-    print(chooseData)
     return json.dumps(chooseData)
 
-@app.route('/setRequest', methods=['GET', 'POST'])
-def setData():
-    pass
+@app.route('/putOne', methods=['Put'])
+def putData():
+    global df
+    global chooseData
+    
+    print(chooseData['state'])
+    chooseData['state'] = request.form.get('state')
+    print(chooseData['state'])
+
+    # update df
+    for i in range(df.shape[0]):
+        if df.loc[i, 'name'] == chooseData['name']:
+            df.loc[i, 'state'] = chooseData['state']
+            print("update df: ", df.loc[i, 'name'], df.loc[i, 'state'])
+            return json.dumps({"msg": "set sucess"})
+    return json.dumps({"msg": "set error, no correspond name"}) 
 
 if __name__ == '__main__':
     """

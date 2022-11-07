@@ -4,8 +4,8 @@
 var myTags = [];
 
 //query
-function getData() {
-    console.log("getData()");
+function getAll() {
+    console.log("getAll()");
     
     $.ajax({
         url: "/getAll",
@@ -14,6 +14,9 @@ function getData() {
         success: function (data) {
             if(data.hasOwnProperty("codeName")){
                 myTags = data.codeName;
+                console.log(myTags.length)
+
+                $("#cloud").addClass("cloudContent");
 
                 var tagCloud = TagCloud('.cloudContent', myTags,{
                     // radius in px
@@ -32,27 +35,40 @@ function getData() {
                     // interact with cursor move on mouse out
                     keep: true,
                 });
-
             }else{
                 console.log('error');
             }
         }
     })
+
 }
 
-//update | 修改
-function putData() {
-    console.log("put data");
-}
+//update => put| 修改
+$(function (){
+    $('#confirmBtn').click(function(){
+        //get index
+        var s = $("#sfs").val();
+        console.log("Put data => index" + s);
+
+        $.ajax({
+            url: "/putOne",
+            type: "PUT",
+            dataType: "json",
+            data: {'state': s},
+            success: function (data) {
+                console.log(data.msg);
+            }
+        })
+        
+        $('#myModal').modal('hide');
+        getAll()
+
+    })
+})
 
 // 隨機抽取一名user
 $(function (){
     $('#getBtn').click(function(){
-        //get index
-        var s = $("#sfs").val();
-
-        console.log("should call back-end sample data");
-        console.log(s);
 
         $.ajax({
             url: "/getOne",
@@ -60,7 +76,7 @@ $(function (){
             dataType: "json",
             success: function (data) {
                 if(data.hasOwnProperty("code")){
-                    console.log("if get data, show modal");
+                    console.log("get data, show modal");
                     $("#code").text(data.code);
                     $("#name").text(data.name);
                     $('#myModal').modal('show');
@@ -73,5 +89,5 @@ $(function (){
 })
 
 $(document).ready(function () {
-    getData();
+    getAll();
 })
