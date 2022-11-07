@@ -3,6 +3,26 @@
 //var" 使用在變數可能或不會被重新賦予值
 var myTags = [];
 
+function mainUI(myTags){
+    TagCloud('.cloudContent', myTags,{
+        // radius in px
+        radius: 500,
+    
+        // animation speed
+        // slow, normal, fast
+        maxSpeed: 'slow',
+        initSpeed: 'slow',
+    
+        // 0 = top
+        // 90 = left
+        // 135 = right-bottom
+        direction: 135,
+    
+        // interact with cursor move on mouse out
+        keep: true,
+    });
+}
+
 //query
 function getAll() {
     console.log("getAll()");
@@ -14,33 +34,13 @@ function getAll() {
         success: function (data) {
             if(data.hasOwnProperty("codeName")){
                 myTags = data.codeName;
-                console.log(myTags.length)
-
-                $("#cloud").addClass("cloudContent");
-
-                var tagCloud = TagCloud('.cloudContent', myTags,{
-                    // radius in px
-                    radius: 500,
-                
-                    // animation speed
-                    // slow, normal, fast
-                    maxSpeed: 'slow',
-                    initSpeed: 'slow',
-                
-                    // 0 = top
-                    // 90 = left
-                    // 135 = right-bottom
-                    direction: 135,
-                
-                    // interact with cursor move on mouse out
-                    keep: true,
-                });
+                console.log(myTags.length);
+                mainUI(myTags);
             }else{
                 console.log('error');
             }
         }
     })
-
 }
 
 //update => put| 修改
@@ -54,6 +54,7 @@ $(function (){
             url: "/putOne",
             type: "PUT",
             dataType: "json",
+            async: false,
             data: {'state': s},
             success: function (data) {
                 console.log(data.msg);
@@ -61,8 +62,8 @@ $(function (){
         })
         
         $('#myModal').modal('hide');
-        getAll()
-
+        getAll();
+        location.reload();
     })
 })
 
@@ -89,5 +90,18 @@ $(function (){
 })
 
 $(document).ready(function () {
-    getAll();
+    $.ajax({
+        url: "/getAll",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            if(data.hasOwnProperty("codeName")){
+                myTags = data.codeName;
+                console.log(myTags.length);
+                mainUI(myTags);
+            }else{
+                console.log('error');
+            }
+        }
+    })
 })
