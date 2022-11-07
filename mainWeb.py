@@ -20,6 +20,26 @@ def getAll():
             codeName = df.loc[i, 'code'] + df.loc[i, 'name']
             allData['codeName'].append(codeName)
 
+def getOne():
+    global df
+    global chooseData
+    # clean data
+    chooseData = {
+        'code': '',
+        'name': '',
+        'state': ''
+    }
+
+    while True:
+        tmp = df.sample()
+        if tmp['state'].values == 0:
+            chooseData['code'] = tmp['code'].values[0]
+            chooseData['name'] = tmp['name'].values[0]
+            chooseData['state'] = str(tmp['state'].values[0])
+            break
+    
+
+
 app = Flask(__name__)
 # flask利用裝飾器@app.route來定義路由
 @app.route('/')
@@ -30,9 +50,13 @@ def index():
 @app.route('/getAll', methods=['GET'])
 def getData():
     getAll()
-    #for i in range(df.shape[0]):
-    #    print(allData['codeName'][i])
     return json.dumps(allData)
+
+@app.route('/getOne', methods=['GET'])
+def getOneData():
+    getOne()
+    print(chooseData)
+    return json.dumps(chooseData)
 
 @app.route('/setRequest', methods=['GET', 'POST'])
 def setData():
