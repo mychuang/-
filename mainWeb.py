@@ -4,7 +4,7 @@ from flask import render_template
 from flask import request
 import json
 import random
-import time
+from datetime import datetime
 
 #Define global data
 chooseData = {'code': '', 'name': '', 'state': ''}
@@ -62,7 +62,18 @@ def putData():
             df.loc[i, 'state'] = chooseData['state']
             print("update df: ", df.loc[i, 'name'], df.loc[i, 'state'])
             return json.dumps({"msg": "set sucess"})
-    return json.dumps({"msg": "set error, no correspond name"}) 
+    return json.dumps({"msg": "set error, no correspond name"})
+
+@app.route('/out', methods=['GET'])
+def outData():
+    global df
+    timeStr = datetime.now().strftime("%Y%m%d_%H%M%S")
+    fileName = 'results_' + timeStr + '.xlsx'
+    print('Create: ', fileName)
+
+    df.to_excel(fileName, encoding="utf_8_sig")
+
+    return json.dumps({"msg": fileName})
 
 if __name__ == '__main__':
     # Read excell

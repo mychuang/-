@@ -74,6 +74,24 @@ $(function (){
     })
 })
 
+// output
+$(function (){
+    $('#outBtn').click(function(){
+
+        $.ajax({
+            url: "/out",
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                console.log(data.msg);
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                alert(textStatus);
+            }
+        })
+    })
+})
+
 $(document).ready(function () {
 
     $.ajax({
