@@ -18,9 +18,9 @@
 
 - static: 前端程式存放區, Flask 採用Jinja 語法讀取網頁
 
-<br>
-
 - unitTest: 測試隨機抽樣功能
+
+- test.xlsx: 測試用檔案
 
 <br>
 
