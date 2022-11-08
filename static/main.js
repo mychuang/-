@@ -6,12 +6,12 @@ var myTags = [];
 function mainUI(myTags){
     TagCloud('.cloudContent', myTags,{
         // radius in px
-        radius: 500,
+        radius: 550,
     
         // animation speed
         // slow, normal, fast
         maxSpeed: 'fast',
-        initSpeed: 'fast',
+        initSpeed: 'normal',
     
         // 0 = top
         // 90 = left
