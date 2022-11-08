@@ -53,6 +53,7 @@ $(function (){
 // 隨機抽取一名user
 $(function (){
     $('#getBtn').click(function(){
+        var txt=$("#sfs :selected").text();
 
         $.ajax({
             url: "/getOne",
@@ -62,6 +63,7 @@ $(function (){
                 if(data.hasOwnProperty("code")){
                     $("#code").text(data.code);
                     $("#name").text(data.name);
+                    $("#prizeName").text(txt);
                     $('#myModal').modal('show');
                 }else{
                     console.log('error');
