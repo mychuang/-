@@ -4,6 +4,7 @@ from flask import render_template
 from flask import request
 import json
 from datetime import datetime
+from sklearn.utils import shuffle
 
 #Define global data
 chooseData = {'code': '', 'name': '', 'state': ''}
@@ -22,9 +23,10 @@ def getAll():
             codeName = df.loc[i, 'code'] + df.loc[i, 'name']
             allData['codeName'].append(codeName)
 
+    print('The remain number: ', len(allData['codeName']))
+
 @app.route('/')
 def index():
-    getAll()
     return render_template('mainPage.html')
 
 @app.route('/getAll', methods=['GET'])
@@ -39,6 +41,7 @@ def getOneData():
     # clean data
     chooseData = {'code': '', 'name': '', 'state': ''}
 
+    df = shuffle(df)
     while True:
         tmp = df.sample()
         if tmp['state'].values == 0:
@@ -59,8 +62,12 @@ def putData():
     for i in range(df.shape[0]):
         if df.loc[i, 'name'] == chooseData['name']:
             df.loc[i, 'state'] = chooseData['state']
-            print("update df: ", df.loc[i, 'name'], df.loc[i, 'state'])
+            print("update df: ", df.loc[i, 'code'], df.loc[i, 'name'], df.loc[i, 'state'])
+
+            getAll()
             return json.dumps({"msg": "set sucess"})
+
+
     return json.dumps({"msg": "set error, no correspond name"})
 
 @app.route('/out', methods=['GET'])
@@ -76,7 +83,8 @@ def outData():
 
 if __name__ == '__main__':
     # Read excell
-    df = pd.read_excel("test.xlsx", header=0)
+    df = pd.read_excel("抽獎名單_正式版.xlsx", header=0)
+    df = shuffle(df)
 
     #run web
     app.debug = True
