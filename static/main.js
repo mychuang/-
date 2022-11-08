@@ -46,7 +46,7 @@ $(function (){
         
         $('#myModal').modal('hide');
 
-        location.reload();
+        //location.reload();
     })
 })
 
