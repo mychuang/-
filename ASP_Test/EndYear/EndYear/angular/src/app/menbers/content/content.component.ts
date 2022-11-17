@@ -10,42 +10,31 @@ import { MENBERS, USERS } from '../menbers';
 })
 export class ContentComponent implements OnInit {
   //menberList: MENBERS;
-  userList: any = [];
-  Employee: any = [];
+  userList: USERS[];
 
   //constructor(private http: HttpClient) { };
   constructor(private menberService: MenbersService) {
+    this.userList = new Array<USERS>();
   };
 
   ngOnInit(): void {
     console.log('component is inited');
-    this.loadEmployees();
-    this.loadUsers();
+
+    this.menberService.getLocation().subscribe(
+      (data: Array<USERS>) => {
+        this.userList = data;
+        console.log(data[0]);
+        console.log(this.userList);
+        console.log(this.userList[0].name)
+        console.log(this.userList[0]);
+      }
+    );
+
   }
 
   // 事件繫結用變數
   public onClickEvent() {
     console.log(this.userList[1]);
   }
-
-  // Get employees list
-  loadEmployees() {
-    return this.menberService.getEmployees().subscribe(
-      (data: {}) => {
-        this.Employee = data;
-        console.log(this.Employee[0].name);
-      }
-    )
-  };
-
-  // Get employees list
-  loadUsers() {
-    return this.menberService.getUsers().subscribe(
-      (data: {}) => {
-        this.userList = data;
-        console.log(this.userList[0].name);
-      }
-    )
-  };
 
 }

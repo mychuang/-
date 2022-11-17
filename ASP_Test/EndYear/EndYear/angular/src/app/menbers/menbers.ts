@@ -14,10 +14,3 @@ export class USERS {
   name!: string;
   age!: string;
 }
-
-export class Employee {
-  id!: string;
-  name!: string;
-  email!: string;
-  phone!: number;
-}
