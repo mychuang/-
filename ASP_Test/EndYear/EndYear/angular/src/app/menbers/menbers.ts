@@ -1,5 +1,5 @@
 export class MENBERS {
-  public codeName: string[] | undefined;
+  public codeName!: string[];
 }
 
 export class MENBERONE {

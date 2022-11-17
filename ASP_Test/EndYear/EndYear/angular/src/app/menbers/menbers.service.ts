@@ -15,14 +15,14 @@ export class MenbersService {
   };
 
   //query
-  //getLocation(): Observable<MENBERS> {
-  //  this.actionUrl = '/getAll';
-  //  const url = this.serverUrl + this.actionUrl;
-  //  return this.http.get<MENBERS>(url);
- // }
+  getMenbers(): Observable<MENBERS[]> {
+    this.actionUrl = '/getAll';
+    const url = this.serverUrl + this.actionUrl;
+    return this.http.get<MENBERS[]>(url);
+  }
 
  //query
-  getLocation(): Observable<USERS[]> {
+  getUsers(): Observable<USERS[]> {
     this.actionUrl = '/users';
     const url = this.serverUrl + this.actionUrl;
     return this.http.get<USERS[]>(url).pipe(retry(1), catchError(this.handleError));
