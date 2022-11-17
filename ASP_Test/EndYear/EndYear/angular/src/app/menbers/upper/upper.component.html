@@ -1,12 +1,14 @@
 <mat-toolbar>
+
   <mat-toolbar-row>
-    <mat-select placeholder="選擇獎項">
-      <mat-option *ngFor="let item of heros" [value]="item">
-        {{ item }}
-      </mat-option>
-    </mat-select>
 
-
+    <mat-form-field>
+      <mat-select name="prizeVaraible" [(value)]="selectedPrize" placeholder="選擇獎項">
+        <mat-option *ngFor="let item of prize" [value]="item.status">
+          {{item.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
     <button mat-raised-button color="accent" (click)="onClickEvent()" style="margin-left: 50px">抽獎囉</button>
 
