@@ -14,7 +14,7 @@ export class ContentComponent implements OnInit {
   ngOnInit(): void {
     console.log('component is inited');
 
-    this.http.get('http://localhost:3000/users').subscribe(res => {
+    this.http.get('http://localhost:3000/getAll').subscribe(res => {
     console.log('res', res)
   })
   }
