@@ -1,3 +1,19 @@
 <app-upper></app-upper>
 
 <p>content works!</p>
+
+
+<ul>
+  <li *ngFor="let hero of Employee">
+    {{ hero.name}}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let hero of userList">
+    {{ hero.name}}
+  </li>
+</ul>
+
+
+<button mat-raised-button color="primary" (click)="onClickEvent()" style="margin-left: 10px">Checks</button>

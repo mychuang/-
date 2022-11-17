@@ -8,3 +8,16 @@ export class MENBERONE {
   public NAME: string | undefined;
   public STATUS: string | undefined;
 }
+
+export class USERS {
+  id!: string;
+  name!: string;
+  age!: string;
+}
+
+export class Employee {
+  id!: string;
+  name!: string;
+  email!: string;
+  phone!: number;
+}
