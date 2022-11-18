@@ -1,7 +1,6 @@
 import { MenbersService } from './../menbers.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { MENBERS, USERS } from '../menbers';
+import { MENBERS } from '../menbers';
 
 @Component({
   selector: 'app-content',
@@ -9,13 +8,13 @@ import { MENBERS, USERS } from '../menbers';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
-  menberList: MENBERS[];
+  menberList: MENBERS;
   myTags: string[];
   TagCloud: any;
 
   //constructor(private http: HttpClient) { };
   constructor(private menberService: MenbersService) {
-    this.menberList = new Array<MENBERS>;
+    this.menberList = new MENBERS;
     this.myTags = [];
     this.TagCloud = require('TagCloud');
   };
@@ -27,9 +26,9 @@ export class ContentComponent implements OnInit {
 
   loadMenbers(){
     return this.menberService.getMenbers().subscribe(
-      (data: Array<MENBERS>) => {
+      (data: MENBERS) => {
         this.menberList = data;
-        this.myTags = this.menberList[0].codeName;
+        this.myTags = this.menberList.codeName;
         console.log(this.myTags);
         this.mainUI(this.myTags);
       }

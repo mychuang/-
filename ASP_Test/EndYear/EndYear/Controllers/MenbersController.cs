@@ -40,7 +40,7 @@ namespace EndYear.Controllers
                 //查詢到的資料都存在ds中了
 
                 //get table data
-                System.Diagnostics.Debug.WriteLine(ds.Tables[0].Rows[5]["NAME"].ToString());
+                //System.Diagnostics.Debug.WriteLine(ds.Tables[0].Rows[5]["NAME"].ToString());
 
                 List<String> codeName = new List<string>();
                 Dictionary<string, List<String>> allData = new Dictionary<string, List<String>>();

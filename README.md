@@ -69,3 +69,13 @@
   ```
   python mainWeb.py
   ```
+
+## Angular & ASP.NET
+
+## 5146
+
+## Run project
+
+http://localhost:60623/angular/dist/content
+
+

@@ -8,9 +8,3 @@ export class MENBERONE {
   public NAME!: string;
   public STATUS!: string;
 }
-
-export class USERS {
-  id!: string;
-  name!: string;
-  age!: string;
-}

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, retry, throwError} from 'rxjs';
-import { MENBERONE, MENBERS, USERS } from './menbers';
+import { MENBERONE, MENBERS } from './menbers';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +12,15 @@ export class MenbersService {
   public serverUrl: string;
 
   constructor(private http: HttpClient) {
-    this.serverUrl = 'http://localhost:3000';
+    this.serverUrl = 'http://localhost:60623/api';
   };
 
   //query
-  getMenbers(): Observable<MENBERS[]> {
-    this.actionUrl = '/getAll';
+  getMenbers(): Observable<MENBERS> {
+    this.actionUrl = '/Menbers/getAll';
     const url = this.serverUrl + this.actionUrl;
-    return this.http.get<MENBERS[]>(url);
+    console.log(url);
+    return this.http.get<MENBERS>(url);
   }
 
   getMenberOne(): Observable<MENBERONE[]> {
