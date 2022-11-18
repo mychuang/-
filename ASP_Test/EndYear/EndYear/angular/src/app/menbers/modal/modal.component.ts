@@ -12,4 +12,8 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // 內嵌繫結用變數
+  code = 'ITCS';
+  name = '李悦';
+
 }
