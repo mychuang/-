@@ -11,45 +11,52 @@ import { MENBERS, USERS } from '../menbers';
 export class ContentComponent implements OnInit {
   menberList: MENBERS[];
   userList: USERS[];
+  myTags: string[];
+  TagCloud: any;
 
   //constructor(private http: HttpClient) { };
   constructor(private menberService: MenbersService) {
     this.userList = new Array<USERS>();
     this.menberList = new Array<MENBERS>;
+    this.myTags = [];
+    this.TagCloud = require('TagCloud');
   };
 
   ngOnInit(): void {
     console.log('component is inited');
-    this.loadUsers();
     this.loadMenbers();
   }
 
-  // 事件繫結用變數
-  public onClickEvent() {
-    console.log(this.userList[1]);
-  }
-
-  // Get user list
-  loadUsers() {
-    return this.menberService.getUsers().subscribe(
-      (data: Array<USERS>) => {
-        this.userList = data;
-        console.log(data[0]);
-        console.log(this.userList);
-        console.log(this.userList[0].name)
-        console.log(this.userList[0]);
-      }
-    );
-  };
 
   loadMenbers(){
     return this.menberService.getMenbers().subscribe(
       (data: Array<MENBERS>) => {
         this.menberList = data;
-        console.log(this.menberList[0].codeName[0]);
-        console.log(this.menberList[0].codeName[10]);
+        this.myTags = this.menberList[0].codeName;
+        console.log(this.myTags);
+        this.mainUI(this.myTags);
       }
     )
+  }
+
+  mainUI(tags: string[]){
+    this.TagCloud('.cloudContent', tags,{
+        // radius in px
+        radius: 550,
+
+        // animation speed
+        // slow, normal, fast
+        maxSpeed: 'fast',
+        initSpeed: 'normal',
+
+        // 0 = top
+        // 90 = left
+        // 135 = right-bottom
+        direction: 135,
+
+        // interact with cursor move on mouse out
+        keep: true,
+    });
   }
 
 }
