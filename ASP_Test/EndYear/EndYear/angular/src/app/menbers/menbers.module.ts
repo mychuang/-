@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatToolbarModule,
     MatSelectModule
-  ]
+  ],
+  entryComponents: [ModalComponent]
 })
 export class MenbersModule { }

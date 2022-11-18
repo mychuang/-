@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-upper',
@@ -8,7 +10,7 @@ import { FormControl } from '@angular/forms';
 })
 export class UpperComponent implements OnInit {
 
-  constructor() { };
+  constructor(public dialog: MatDialog) { };
 
   prize: any = [
     { status: "1",
@@ -34,8 +36,12 @@ export class UpperComponent implements OnInit {
 
   // 事件繫結用變數
   public onClickEvent() {
-    alert("You click me!");
     console.log(this.selectedPrize);
+    this.showAddPostDialog();
+  }
+
+  public showAddPostDialog() {
+    this.dialog.open(ModalComponent);
   }
 
 }
