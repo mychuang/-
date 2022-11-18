@@ -1,11 +1,11 @@
 <mat-toolbar style="margin-top: 20px">
-  <span style="font-size: 48px; margin-top: 10px">2022資訊X財務尾牙抽獎</span>
+  <span style="font-size: 48px; margin-top: 10px; color: #004147">2022資訊X財務尾牙抽獎</span>
 
   <mat-toolbar-row>
 
     <mat-form-field>
-      <mat-select name="prizeVaraible" [(value)]="selectedPrize" style="font-size: 28px">
-        <mat-option *ngFor="let item of prize" [value]="item" style="font-size: 28px">
+      <mat-select name="prizeVaraible" [(value)]="selectedPrize" style="font-size: 28px; color: #004147">
+        <mat-option *ngFor="let item of prize" [value]="item" style="font-size: 28px; color: #004147">
           {{item.value}}
         </mat-option>
       </mat-select>

@@ -1,14 +1,14 @@
-<h1 mat-dialog-title>
+<h1 mat-dialog-title style="font-size: 48px">
   {{prizeName}}
 </h1>
 
 <mat-dialog-content>
-  <h2>恭喜得獎者</h2>
-  <p>{{getMenber.CODE}}</p>
-  <p>{{getMenber.NAME}}</p>
+  <h2 style="font-size: 36px">恭喜得獎者</h2>
+  <p style="font-size: 32px">{{getMenber.CODE}}</p>
+  <p style="font-size: 32px">{{getMenber.NAME}}</p>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button mat-button color="primary" (click)="onClickEvent()">Confirm</button>
-  <button mat-button mat-dialog-close color="warn">Close</button>
+  <button mat-button color="primary" (click)="onClickEvent()" style="font-size: 28px">Confirm</button>
+  <button mat-button mat-dialog-close color="warn" style="font-size: 28px">Close</button>
 </mat-dialog-actions>
