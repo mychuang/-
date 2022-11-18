@@ -7,7 +7,7 @@ import { MENBERONE, MENBERS, USERS } from './menbers';
   providedIn: 'root'
 })
 export class MenbersService {
-  public actionUrl: string | undefined;
+  public actionUrl!: string;
   public serverUrl: string;
 
   constructor(private http: HttpClient) {
@@ -27,11 +27,11 @@ export class MenbersService {
     return this.http.get<MENBERONE[]>(url);
   }
 
- //query
-  getUsers(): Observable<USERS[]> {
-    this.actionUrl = '/users';
+  //update | 修改
+  putOne(menberOne: MENBERONE): Observable<MENBERONE> {
+    this.actionUrl = '/putOne';
     const url = this.serverUrl + this.actionUrl;
-    return this.http.get<USERS[]>(url).pipe(retry(1), catchError(this.handleError));
+    return this.http.put<MENBERONE>(url, menberOne);
   }
 
   // Error handling

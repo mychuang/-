@@ -37,11 +37,13 @@ export class UpperComponent implements OnInit {
   // 事件繫結用變數
   public onClickEvent() {
     console.log(this.selectedPrize);
-    this.showAddPostDialog();
+    this.showDialog();
   }
 
-  public showAddPostDialog() {
-    this.dialog.open(ModalComponent);
+  public showDialog() {
+    const confirmDialogRef = this.dialog.open(ModalComponent, {
+      hasBackdrop: false
+    });
   }
 
 }
