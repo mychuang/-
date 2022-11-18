@@ -29,7 +29,6 @@ export class ContentComponent implements OnInit {
       (data: MENBERS) => {
         this.menberList = data;
         this.myTags = this.menberList.codeName;
-        console.log(this.myTags);
         this.mainUI(this.myTags);
       }
     )

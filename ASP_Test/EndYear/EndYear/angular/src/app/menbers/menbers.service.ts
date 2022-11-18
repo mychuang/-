@@ -23,10 +23,10 @@ export class MenbersService {
     return this.http.get<MENBERS>(url);
   }
 
-  getMenberOne(): Observable<MENBERONE[]> {
-    this.actionUrl = '/getOne';
+  getMenberOne(): Observable<MENBERONE> {
+    this.actionUrl = '/Menbers/getOne';
     const url = this.serverUrl + this.actionUrl;
-    return this.http.get<MENBERONE[]>(url);
+    return this.http.get<MENBERONE>(url);
   }
 
   //update | 修改

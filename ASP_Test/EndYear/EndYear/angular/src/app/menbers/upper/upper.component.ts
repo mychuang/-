@@ -29,20 +29,23 @@ export class UpperComponent implements OnInit {
       value: '偏偏要得獎' }
   ];
 
-  selectedPrize: string = "1";
+  selectedPrize = this.prize[1];
 
   ngOnInit(): void {
   };
 
   // 事件繫結用變數
   public onClickEvent() {
-    console.log(this.selectedPrize);
     this.showDialog();
   }
 
   public showDialog() {
     const confirmDialogRef = this.dialog.open(ModalComponent, {
-      hasBackdrop: false
+      hasBackdrop: false,
+      data: {
+        selectedValue: this.selectedPrize.value,
+        selectedStatus: this.selectedPrize.status
+      }
     });
   }
 
