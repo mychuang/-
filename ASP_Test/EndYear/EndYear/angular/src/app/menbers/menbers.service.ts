@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, retry, throwError} from 'rxjs';
-import { MENBERS, USERS } from './menbers';
+import { MENBERONE, MENBERS, USERS } from './menbers';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,12 @@ export class MenbersService {
     this.actionUrl = '/getAll';
     const url = this.serverUrl + this.actionUrl;
     return this.http.get<MENBERS[]>(url);
+  }
+
+  getMenberOne(): Observable<MENBERONE[]> {
+    this.actionUrl = '/getOne';
+    const url = this.serverUrl + this.actionUrl;
+    return this.http.get<MENBERONE[]>(url);
   }
 
  //query

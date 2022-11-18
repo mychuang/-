@@ -10,20 +10,17 @@ import { MENBERS, USERS } from '../menbers';
 })
 export class ContentComponent implements OnInit {
   menberList: MENBERS[];
-  userList: USERS[];
   myTags: string[];
   TagCloud: any;
 
   //constructor(private http: HttpClient) { };
   constructor(private menberService: MenbersService) {
-    this.userList = new Array<USERS>();
     this.menberList = new Array<MENBERS>;
     this.myTags = [];
     this.TagCloud = require('TagCloud');
   };
 
   ngOnInit(): void {
-    console.log('component is inited');
     this.loadMenbers();
   }
 
