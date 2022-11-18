@@ -1,22 +1,4 @@
 {
-  "users": [
-    {
-      "id": "1",
-      "name": "User 1",
-      "age": 25
-    },
-    {
-      "id": "2",
-      "name": "User 2",
-      "age": 27
-    },
-    {
-      "id": "3",
-      "name": "User 3",
-      "age": 30
-    }
-  ],
-
   "getAll":[
     {
       "codeName":["資訊長曹德溪","財務長蘇育文","FA傅冠昇","FA馬若如","FA任家寧",
@@ -25,6 +7,15 @@
     "FAGA林倢妤","FAIA林宥辰","FAIA李承翰","FAIA李曉青","FAIA邵明杰",
     "FAIA郭韋德","FAIA劉育哲","FAIA江彥錡","FAIA王怡靜","FAIA蕭吟容",
     "FAIA李家容","FAIA鄭育成","FAIA賴郁文"]
+    }
+  ],
+
+  "getOne":[
+    {
+      "ID": "55",
+      "CODE": "FR",
+      "NAME": "林郁芳",
+      "STATUS": "0"
     }
   ]
 }

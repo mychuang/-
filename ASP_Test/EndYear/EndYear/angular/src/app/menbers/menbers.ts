@@ -3,10 +3,10 @@ export class MENBERS {
 }
 
 export class MENBERONE {
-  public ID: string | undefined;
-  public CODE: string | undefined;
-  public NAME: string | undefined;
-  public STATUS: string | undefined;
+  public ID!: string;
+  public CODE!: string;
+  public NAME!: string;
+  public STATUS!: string;
 }
 
 export class USERS {

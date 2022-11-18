@@ -10,23 +10,26 @@ import { MenbersService } from '../menbers.service';
 export class ModalComponent implements OnInit {
   menber: MENBERONE[];
 
+  // 內嵌繫結用變數
+  code: string;
+  name: string;
+
   constructor(private menberService: MenbersService) {
     this.menber = new Array<MENBERONE>();
+    this.code = '';
+    this.name = '';
   }
 
   ngOnInit(): void {
     this.loadMenber();
   }
 
-  // 內嵌繫結用變數
-  code = 'ITCS';
-  name = '李悦';
-
   loadMenber(){
     return this.menberService.getMenberOne().subscribe(
       (data: Array<MENBERONE>) => {
         this.menber = data;
-        console.log(data);
+        this.code = this.menber[0].CODE;
+        this.name = this.menber[0].NAME;
       }
     );
   }
