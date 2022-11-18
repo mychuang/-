@@ -31,7 +31,7 @@ export class MenbersService {
 
   //update | 修改
   putOne(menberOne: MENBERONE): Observable<MENBERONE> {
-    this.actionUrl = '/putOne';
+    this.actionUrl = '/Menbers/putOne';
     const url = this.serverUrl + this.actionUrl;
     return this.http.put<MENBERONE>(url, menberOne);
   }

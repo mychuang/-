@@ -70,12 +70,36 @@
   python mainWeb.py
   ```
 
+<img src='03.png'>
+
 ## Angular & ASP.NET
 
-## 5146
+### How to build
 
-## Run project
+- Nuget install the followings in VS2019:
 
-http://localhost:60623/angular/dist/content
+  - Dapper 2.0.123
+
+  - Oracle.ManagedDataAccess 21.8.0
+
+- VS code
+
+  ```
+  cd 尾牙抽獎專案/ASP_Test/EndYear/EndYear/angular
+  rm -rf node_modules
+  rm -rf dist
+  npm install
+  npm run build
+  ```
+
+### Run project
+
+- Open EndYear.sln by VS2019
+
+- Run/build the project 
+
+- Key in: http://localhost:60623/angular/dist/content on browser
+
+<img src='02.png'>
 
 

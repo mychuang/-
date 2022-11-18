@@ -100,6 +100,9 @@ namespace EndYear.Controllers
             parameter.Add("ID", value.ID);
             parameter.Add("STATUS", value.STATUS);
 
+            System.Diagnostics.Debug.WriteLine(value.ID);
+            System.Diagnostics.Debug.WriteLine(value.STATUS);
+
             string sql = @"UPDATE EndYearNameList SET 
                            STATUS = :STATUS 
                            WHERE ID = :ID";

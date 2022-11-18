@@ -9,22 +9,18 @@ import { MenbersService } from '../menbers.service';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
-  menber: MENBERONE;
+  getMenber: MENBERONE;
   putMenber: MENBERONE;
 
   // 內嵌繫結用變數
-  code: string;
-  name: string;
   status: string;
   prizeName: string;
 
   constructor(private menberService: MenbersService,
               private dialogRef: MatDialogRef<ModalComponent>,
               @Inject(MAT_DIALOG_DATA) private injectData: any) {
-    this.menber = new MENBERONE;
+    this.getMenber = new MENBERONE;
     this.putMenber = new MENBERONE;
-    this.code = '';
-    this.name = '';
     this.prizeName = '';
     this.status = injectData.selectedStatus;
     this.prizeName = injectData.selectedValue;
@@ -37,13 +33,19 @@ export class ModalComponent implements OnInit {
   loadMenber(){
     return this.menberService.getMenberOne().subscribe(
       (data: MENBERONE) => {
-        this.code = data.CODE;
-        this.name = data.NAME;
+        this.getMenber.CODE = data.CODE;
+        this.getMenber.NAME = data.NAME;
+        this.getMenber.ID = data.ID;
       }
     );
   }
 
   public onClickEvent() {
+    this.putMenber.ID = this.getMenber.ID;
+    this.putMenber.CODE = this.getMenber.CODE;
+    this.putMenber.NAME = this.getMenber.NAME;
+    this.putMenber.STATUS = this.status;
+
     this.menberService.putOne(this.putMenber).subscribe(
       {
         next: data => {
