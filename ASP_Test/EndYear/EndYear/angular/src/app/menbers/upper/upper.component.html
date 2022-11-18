@@ -1,16 +1,17 @@
-<mat-toolbar>
+<mat-toolbar style="margin-top: 20px">
+  <span style="font-size: 48px; margin-top: 10px">2022資訊X財務尾牙抽獎</span>
 
   <mat-toolbar-row>
 
     <mat-form-field>
-      <mat-select name="prizeVaraible" [(value)]="selectedPrize" placeholder="選擇獎項">
-        <mat-option *ngFor="let item of prize" [value]="item">
+      <mat-select name="prizeVaraible" [(value)]="selectedPrize" style="font-size: 28px">
+        <mat-option *ngFor="let item of prize" [value]="item" style="font-size: 28px">
           {{item.value}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <button mat-raised-button color="accent" (click)="onClickEvent()" style="margin-left: 50px">抽獎囉</button>
+    <button mat-raised-button color="accent" (click)="onClickEvent()" style="margin-left: 50px; font-size: 28px">抽獎囉</button>
 
   </mat-toolbar-row>
 </mat-toolbar>
