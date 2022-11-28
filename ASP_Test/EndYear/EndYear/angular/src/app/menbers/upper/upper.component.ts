@@ -22,11 +22,11 @@ export class UpperComponent implements OnInit {
     { status: "4",
       value: '財務長獎' },
     { status: "5",
-      value: '不讓你獎' },
+      value: '有點幸運獎' },
     { status: "6",
-      value: '虎年唬唬獎'},
+      value: '不小心中獎'},
     { status: "7",
-      value: '偏偏要得獎' }
+      value: '今晚讓我獎' }
   ];
 
   selectedPrize = this.prize[1];
